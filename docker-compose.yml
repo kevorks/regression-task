@@ -1,6 +1,6 @@
 version: '3'
 services:
-  classification-task-project:
+  regression-task-project:
     build:
       context: ./
       dockerfile: src/Dockerfile
