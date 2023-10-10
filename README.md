@@ -92,6 +92,38 @@ The commands above will create and start the container.
    docker-compose down
    ```
 
+## Deployment to Kubernetes Cluster
+-----------------------------------
+
+To deploy your project using Kubernetes, the following steps can be applied:
+
+1. **Install & Enable Kubernetes**: For an easy setup, download and install Docker Desktop for your system from the [Docker website](https://www.docker.com/get-started) and enable Kubernetes. 
+
+2. **Clone the Repository**: Open a terminal and clone the repository:
+
+   ```bash
+   git clone https://github.com/kevorks/regression-task.git
+   cd regression-task
+   ```
+
+3. **Apply the Kubernetes Deployment**: Use `kubectl` to apply the Kubernetes Deployment configuration defined in `deployment-ml-app.yml`. This will create the necessary resources on your Kubernetes cluster:
+
+   ```bash
+   kubectl apply -f deployment-ml-app.yml
+   ```
+
+4. **Monitor Deployment**: The deployment's progress can be monitored using the following command:
+
+   ```bash
+   kubectl get deployment ml-deployment
+   ```
+
+5. **Cleaning Up**: To delete the resources created by the deployment, including pods and the deployment itself, execute the following:
+
+   ```bash
+   kubectl delete -f deployment-ml-app.yml
+   ```
+
 ## Maintainers
 --------------
 
