@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import pickle
 import logging
 import logging.config
 import matplotlib.pyplot as plt
@@ -25,12 +26,17 @@ current_directory = os.getcwd()
 # The full path to the CSV file
 csv_path = os.path.join(current_directory, data_folder, csv_filename)
 
+# API folder
+api_folder = '../api'
+api_folder_path = os.path.join(os.getcwd(), api_folder)
+
 if __name__ == '__main__':
     logging.info('Process started')
 
     # Read the CSV file into a DataFrame
     logging.info('Loading the data')
     df = pd.read_csv(csv_path)
+    df.columns = [col.replace(" ", "_") for col in df.columns]
 
     # Get a data snapshot
     logging.info('Data snapshot')
@@ -96,5 +102,10 @@ if __name__ == '__main__':
             best_model = model_name
 
     logging.info(f'Best Model: {best_model} with MSE: {best_mse}')
+
+    logging.info(f'{best_model} ML model is stored!')
+    pickle_out = open(api_folder_path + '/best_model.pkl', 'wb')
+    pickle.dump(model, pickle_out)
+    pickle_out.close()
 
     logging.info('Process ended successfully')
