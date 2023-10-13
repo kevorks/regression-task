@@ -1,10 +1,18 @@
 version: '3'
 services:
-  regression-task-project:
+  api-service:
     build:
-      context: ./
-      dockerfile: src/Dockerfile
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - src-service
+
+  src-service:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
     volumes:
       - ./data:/app/data
-      - ./src:/app/src
     command: python3 main.py
