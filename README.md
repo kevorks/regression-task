@@ -124,8 +124,8 @@ To deploy your project using Kubernetes, the following steps can be applied:
    kubectl delete -f deployment-ml-app.yml
    ```
 
-## Maintainers
+## Author
 --------------
 
-* **Sevag Kevork** - *Maintainer/Data Scientist* - [me@sevagkevork.net](https://github.com/kevorks)
+* **Sevag Kevork** - *Author/Data Scientist* - [me@sevagkevork.net](https://github.com/kevorks)
 
